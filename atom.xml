@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-02-06T03:54:45.654Z</updated>
+  <updated>2025-02-11T05:19:42.950Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>渗透笔记</title>
+    <link href="http://example.com/2025/02/11/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/"/>
+    <id>http://example.com/2025/02/11/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/</id>
+    <published>2025-02-11T03:21:26.477Z</published>
+    <updated>2025-02-11T05:19:42.950Z</updated>
+    
+    <content type="html"><![CDATA[<p>替换system，*补齐</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a=passthru(&#x27;cat f*&#x27;);</span><br></pre></td></tr></table></figure><p><strong><code>exec()</code></strong>:</p><ul><li><code>exec()</code> 函数执行外部程序，并返回输出结果。类似于 <code>system()</code>，但是它不会直接输出结果，而是将输出存储在一个数组中。</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">复制代码</span><br><span class="line">exec(&#x27;command&#x27;, $output);</span><br></pre></td></tr></table></figure><p><strong><code>passthru()</code></strong>:</p><ul><li><code>passthru()</code> 函数执行外部程序，并且直接输出原始结果，适用于执行二进制命令。</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">复制代码</span><br><span class="line">passthru(&#x27;command&#x27;);</span><br></pre></td></tr></table></figure><p><strong><code>shell_exec()</code></strong>:</p><ul><li><code>shell_exec()</code> 函数执行外部程序，并返回命令的完整输出。</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">复制代码</span><br><span class="line">$output = shell_exec(&#x27;command&#x27;);</span><br></pre></td></tr></table></figure><p><strong><code>popen()</code></strong>:</p><ul><li><code>popen()</code> 打开一个进程管道，执行外部命令并返回资源句柄。可以通过 <code>fgets()</code> 或 <code>fread()</code> 从管道中读取输出。</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">复制代码</span><br><span class="line">$handle = popen(&#x27;command&#x27;, &#x27;r&#x27;);</span><br><span class="line">$output = fread($handle, 4096);</span><br></pre></td></tr></table></figure><p><strong><code>proc_open()</code></strong>:</p><ul><li><code>proc_open()</code> 可以打开一个进程，并执行外部程序，允许更细粒度的控制。它需要更多参数，包括输入输出的管道管理。</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">复制代码</span><br><span class="line">$descriptorspec = array(</span><br><span class="line">    0 =&gt; array(&quot;pipe&quot;, &quot;r&quot;),</span><br><span class="line">    1 =&gt; array(&quot;pipe&quot;, &quot;w&quot;),</span><br><span class="line">    2 =&gt; array(&quot;pipe&quot;, &quot;w&quot;)</span><br><span class="line">);</span><br><span class="line">$process = proc_open(&#x27;command&#x27;, $descriptorspec, $pipes);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;替换system，*补齐&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td cla</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
